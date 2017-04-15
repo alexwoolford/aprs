@@ -36,7 +36,7 @@ class AprsKafkaFeed:
     def run(self):
         aprs = aprslib.IS(self.callsign)
         aprs.connect()
-        aprs.consumer(self.callback)
+        aprs.consumer(self.callback, immortal=True)
 
     def __del__(self):
         self.kafka_producer.close()
